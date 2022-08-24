@@ -49,11 +49,6 @@ public class CategoryController {
         iCategoryService.delete(id);
     }
 
-
-
-
-
-
 }
 
 
