@@ -2,6 +2,10 @@ import 1
 import 1
 import 1
 1
+featA
+featA
+featA
+2 test featA
 2 test featB
 3
 4 featBfeatB
@@ -9,7 +13,8 @@ import 1
 6
 7 featB
 8
+featA
+featA
 featB
-featB
-featB
-
+featA
+featA
