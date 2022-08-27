@@ -2,13 +2,19 @@ import 1
 import 1
 import 1
 1
-2 test featB
+featA
+featA
+2 test featA
 3
 4 featBfeatB
 5
 6
 7 featB
 8
+featA
+featA
+featA
+featA
 featB
 featB
 featB
