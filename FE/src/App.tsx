@@ -21,6 +21,7 @@ import DetailImportInvoice from "./pages/ImportInvoice/DetailImportInvoice";
 import ProductDetails from "./pages/product/ProductDetails";
 import { Status } from "./components/stock_transfers/status";
 import Create from "./components/stock_transfers/create";
+import InventoryManager from "./components/inventory/InventoryManager";
 
 const App: React.FC = () => {
   const router = useRoutes([

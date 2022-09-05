@@ -12,7 +12,7 @@ export const getAllActiveInventory = async () => {
 export const getPagination = async () => {
     return (await axios.get(`http://localhost:8080/inventories/pagination`)).data
 }
-export const findInventoryById = async (id:number) => {
+export const findInventoryById = async (id?:number) => {
     return (await axios.get(`http://localhost:8080/inventories/${id}`)).data
 }
 
