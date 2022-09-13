@@ -32,8 +32,8 @@ const InventoryStatisticTable = (props: Props) => {
     
             render: (importCode: string,record:InventoryStatistic,index:number) => {
                 return (
-                    <Tag color="green" onClick={() => { navigate(`/products/${record.productVariantId}?backcode=statistic`) }}  >
-                        <Link to={`/products/${record.productVariantId}?backcode=statistic`}>{importCode}</Link>
+                    <Tag color="green" onClick={() => { navigate(`/warehouse/products/${record.productId}?backcode=statistic`) }}  >
+                        <Link to={`/warehouse/products/${record.productId}?backcode=statistic`}>{importCode}</Link>
                     </Tag>
                 )
             }

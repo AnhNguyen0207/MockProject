@@ -148,4 +148,16 @@ public class InventoryServiceImpl implements IInventoryService {
         iInventoriesProductVariantRepo.save(inventoriesProductVariant);
         return inventoriesProductVariant;
     }
+
+    @Override
+    public List<ProductVariantsDTO> findInventoriesQuantity(Integer id) {
+        List<ProductVariantsDTO> results = new ArrayList<>();
+        List<ProductVariant> productVariants = productVariantsRepository.findAllById(inventoryRepository.findInventoriesQuantity(id));
+        for (ProductVariant item : productVariants) {
+            ProductVariantsDTO productVariantsDTO = toDto(item);
+            productVariantsDTO.setQuantity(inventoryRepository.Quantity(id, item.getId()));
+            results.add(productVariantsDTO);
+        }
+        return results;
+    }
 }

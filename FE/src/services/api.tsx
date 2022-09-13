@@ -53,10 +53,10 @@ export const getDetailImportInvoice = async (code: string) => {
     return await axios.get(`http://localhost:8080/api/imports/getDetails/${code}`,{headers})
 }
 export const updateStatusInvoice = async (importId: number, status: string, accountId: number) => {
-    return await axios.put(`http://localhost:8080/api/imports/updateStatus?id=${importId}&status=${status}&accountId=${accountId}`,{headers})
+    return await axios.put(`http://localhost:8080/api/imports/updateStatus?id=${importId}&status=${status}&accountId=${accountId}`,{ title: "Update trạng thái" },{headers})
 }
 export const updateStatusReturnInvoice = async (importId: number, status: string, accountId: number) => {
-    return await axios.put(`http://localhost:8080/api/imports/updateStatusReturn?id=${importId}&status=${status}&accountId=${accountId}`,{headers})
+    return await axios.put(`http://localhost:8080/api/imports/updateStatusReturn?id=${importId}&status=${status}&accountId=${accountId}`,{ title: "Update trạng thái trả hàng" },{headers})
 }
 export const getHistoryStatusImportInvoice = async (importId: number) => {
     return await axios.get(`http://localhost:8080/api/imports/getStatusHistory/${importId}`,{headers})

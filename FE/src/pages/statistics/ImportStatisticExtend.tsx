@@ -1,6 +1,6 @@
 import { Select, Tag } from "antd"
 import Table, { ColumnProps } from "antd/lib/table"
-import { useNavigate } from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { ImportStatistic, sortOption } from "../../type/allType"
 
 interface Props {
@@ -29,9 +29,11 @@ const ImportStatisticExtend = (props: Props) => {
             key: 'importCode',
             width: '8%',
     
-            render: (importCode: string) => {
+            render: (importCode: string,record) => {
                 return (
-                    <Tag color="green" onClick={() => { navigate(`/purchase_orders/details/PON00130`) }}  >{importCode}</Tag>
+                    <Tag color="green" onClick={() => { navigate(`/coordinator/purchase_orders/details/${record.importCode}`) }}  >
+                        <Link to={`/coordinator/purchase_orders/details/${record.importCode}`}>{importCode}</Link>
+                    </Tag>
                 )
             }
         },
@@ -42,7 +44,9 @@ const ImportStatisticExtend = (props: Props) => {
     
             render: (data: string,record:ImportStatistic) => {
                 return (
-                    <Tag color="orange" onClick={() => { navigate(`/products/${record.productVariantId}`) }}  >{data}</Tag>
+                    <Tag color="orange" onClick={() => { navigate(`/warehouse/products/${record.productId}`) }}  >
+                        <Link to={`/warehouse/products/${record.productId}`}>{data}</Link>
+                    </Tag>
                 )
             }
         },

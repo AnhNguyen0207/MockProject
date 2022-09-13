@@ -96,6 +96,16 @@ export const deleteListProductVariant = async (resultId: IResultId) => {
   );
 };
 
+export const findInventoryByQuantity = async (id?: number) => {
+    return (
+        await axios.get(`http://localhost:8080/inventories/quantity`, {
+            params:{
+                id:id
+            },
+            headers })
+    );
+};
+
 export const updateMinQuantityStorage = async (
   request: IMinQuantityRequest
 ) => {

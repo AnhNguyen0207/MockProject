@@ -286,6 +286,7 @@ export const Status = () => {
     }, 1000);
   }, []);
   // console.log(accountCreate)
+  console.log(status)
   return (
     <Spin spinning={spin}>
       <div className="p-5">
@@ -748,7 +749,7 @@ export const Status = () => {
                   </Col>
                   <Col className="gutter-row" span={6}>
                     <div style={style}>
-                      : {moment(status?.dateSend).format("DD/MM/YYYY HH:mm")}
+                      : {status?.dateSend}
                     </div>
                   </Col>
                   <Col className="gutter-row" span={6}>
@@ -769,7 +770,7 @@ export const Status = () => {
                     </Col>
                     <Col className="gutter-row" span={6}>
                       <div style={style}>
-                        : {moment(status?.dateSend).format("DD/MM/YYYY HH:mm")}
+                        : {status?.dateSend}
                       </div>
                     </Col>
                     <Col className="gutter-row" span={6}>
@@ -786,7 +787,7 @@ export const Status = () => {
                     <Col className="gutter-row" span={6}>
                       <div style={style}>
                         :{" "}
-                        {moment(status?.dateReceive).format("DD/MM/YYYY HH:mm")}
+                        {status?.dateReceive}
                       </div>
                     </Col>
                     <Col className="gutter-row" span={6}>

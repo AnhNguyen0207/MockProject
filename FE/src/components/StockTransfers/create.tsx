@@ -291,13 +291,23 @@ const Create: React.FC = () => {
     setInSend(listInventory);
     setInReceive(listInventory);
   }, [a]);
+  const [send,setSend] = useState(null)
+  const [receive,setReceive] = useState(null)
+  const handleClear = () =>{
+    setSend(null)
+    setReceive(null)
+    setInSend(listInventory)
+    setInReceive(listInventory)
+  }
   const handleClickOptionSend = async (e: any) => {
+    setSend(e)
     setInventoryId(e);
     const exportByInventory = await findInventoryById(e);
     setInventorySend(exportByInventory);
     setInReceive(listInventory.filter((i: any) => i.id !== e));
   };
-  const handleClickOptionReceive = async (e?: number) => {
+  const handleClickOptionReceive = async (e: any) => {
+    setReceive(e)
     const exportReceive = await findInventoryById(e);
     setInventoryReceive(exportReceive);
     setInSend(listInventory.filter((i: any) => i.id !== e));
@@ -454,6 +464,7 @@ const Create: React.FC = () => {
                     onSelect={handleClickOptionSend}
                     placeholder="Tìm kiếm chi nhánh"
                     allowClear
+                    value={send}
                   >
                     {inSend &&
                       inSend?.map((item: inventory) => (
@@ -491,6 +502,7 @@ const Create: React.FC = () => {
                     placeholder="Tìm kiếm chi nhánh"
                     onSelect={handleClickOptionReceive}
                     allowClear
+                    value={receive}
                   >
                     {inReceive &&
                       inReceive?.map((item: inventory) => (
@@ -516,6 +528,7 @@ const Create: React.FC = () => {
                       ))}
                   </Select>
                 </div>
+                <div style={{display:"flex",marginTop:35}}><Button onClick={handleClear}>Xoá lựa chọn</Button></div>
               </div>
               <div className="select-inventory-left">
                 <div className="select-inventory-top">
@@ -566,9 +579,9 @@ const Create: React.FC = () => {
                         key={item.id}
                       >
                         <div>
-                          <div>{item.name}</div>
+                          <div>Mã hàng : {item.code } -  Tên : {item.name}</div>
                           <div>
-                            Tồn : {item.quantity} | Có thể bán : {item.quantity}
+                            Số lượng : {item.quantity}
                           </div>
                         </div>
                       </Select.Option>

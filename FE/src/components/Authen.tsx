@@ -7,7 +7,7 @@ import PageResult from "./PageResult";
 const Authen = () => {
   const { pathname } = useLocation();
   const userRoles = useSelector((state: RootState) => state?.user?.authorities);
-  const auth = userRoles?.every((r) => pathname?.includes(r));
+  const auth = userRoles?.some((r) => pathname?.includes(r));
 
   if (userRoles?.includes("admin") || pathname?.includes("home") || auth) {
     return <Outlet />;

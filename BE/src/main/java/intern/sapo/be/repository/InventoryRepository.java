@@ -29,4 +29,7 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
     @Query(value = "call select_create_at(?1)",nativeQuery = true)
     Timestamp createAt(Integer id);
 
+    @Query(value = "select product_variant_id from inventories_product_variant where inventory_id = ?1 and  quantity <= min_quantity", nativeQuery = true)
+    List<Integer> findInventoriesQuantity(Integer id);
+
 }

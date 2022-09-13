@@ -504,7 +504,7 @@ const Statistics: FC = () => {
                                 </Grid>
                                 <Grid item xs={7.5}>
                                     <Paper style={{ borderRadius: 5, height: 600, width: '100%', padding: 20 }}>
-                                        {imports.length > 0 ? <BarChartStatistic imports={imports}></BarChartStatistic> :
+                                        {(imports  && imports.length)? <BarChartStatistic imports={imports}></BarChartStatistic> :
                                             <div style={{ display: 'flex', justifyContent: 'center' }}>
 
                                                 <Antd.Image

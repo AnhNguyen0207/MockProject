@@ -39,9 +39,9 @@ import java.util.List;
         query = "select di.id as detailsImportId,\n" +
                 "       pv.code,\n" +
                 "       pv.name,\n" +
-                "       if(ri.quantity is not null, di.quantity - sum(ri.quantity),di.quantity)                      as quantity,\n" +
+                "       if(ri.quantity >=0, di.quantity - sum(ri.quantity),di.quantity)                      as quantity,\n" +
                 "       di.import_price                                                                               as importPrice,\n" +
-                "       if(ri.quantity is not null, di.total_price - (sum(ri.quantity) * di.import_price), di.total_price) as totalPrice,\n" +
+                "       if(ri.quantity >=0, di.total_price - (sum(ri.quantity) * di.import_price), di.total_price) as totalPrice,\n" +
                 "       s.name\n" +
                 "from details_imports di\n" +
                 "         left join details_return_import ri on di.id = ri.details_import_id\n" +
@@ -58,9 +58,9 @@ import java.util.List;
         query = "select di.id                                            as detailsImportId,\n" +
                 "       pv.code,\n" +
                 "       pv.name,\n" +
-                "       if(ri.quantity is not null, sum(ri.quantity), 0) as quantity,\n" +
+                "       if(ri.quantity >=0 , sum(ri.quantity), 0) as quantity,\n" +
                 "       di.import_price                                  as importPrice,\n" +
-                "       if(ri.quantity is not null, di.total_price - ((di.quantity - sum(ri.quantity)) * di.import_price),\n" +
+                "       if(ri.quantity >=0 , (di.total_price - ((di.quantity - sum(ri.quantity)) * di.import_price)),\n" +
                 "          di.total_price)                               as totalPrice,\n" +
                 "       s.name\n" +
                 "from details_imports di\n" +

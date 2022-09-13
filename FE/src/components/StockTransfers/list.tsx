@@ -255,14 +255,20 @@ export const ListExport = () => {
         setInSend(listInventory);
         setInReceive(listInventory);
     }, [a]);
+    const [send,setSend] = useState(null)
+    const [receive,setReceive] = useState(null)
+    const [status,setStatus] = useState(null)
+
     const handleClickOptionSend = async (e: any) => {
+        setSend(e)
         setParam((prev) => ({
             ...prev,
             exportInventory: e,
         }));
         setInReceive(listInventory.filter((i: any) => i.id !== e));
     };
-    const handleClickOptionReceive = async (e?: number) => {
+    const handleClickOptionReceive = async (e: any) => {
+        setReceive(e)
         setParam((prev) => ({
             ...prev,
             receiveInventory: e,
@@ -308,13 +314,15 @@ export const ListExport = () => {
             setSpin(false);
         }, 1000);
     }, []);
+
     const onSearch = (e: any) => {
         setParam((prev) => ({
             ...prev,
             code: e,
         }));
     };
-    const handleChangeSelect = (value: number) => {
+    const handleChangeSelect = (value: any) => {
+        setStatus(value)
         if (value * 1 === 3) {
             // console.log("a");
             setParam((prev) => ({
@@ -330,6 +338,9 @@ export const ListExport = () => {
     };
     const handleSelect = () => {
         setParam({});
+        setSend(null)
+        setReceive(null)
+        setStatus(null)
     }
     return (
         <Spin spinning={spin}>
@@ -361,6 +372,7 @@ export const ListExport = () => {
                                     size="large"
                                     allowClear
                                     width={"50%"}
+
                                 />
                             </Space>
                         </div>
@@ -376,7 +388,7 @@ export const ListExport = () => {
                                 onChange={handleChangeSelect}
                                 placeholder={"Trạng thái"}
                                 allowClear
-
+                                value={status}
                             >
                                 <Select.Option key={0}>Chờ chuyển</Select.Option>
                                 <Select.Option key={1}>Đang chuyển</Select.Option>
@@ -397,6 +409,7 @@ export const ListExport = () => {
                                 onSelect={handleClickOptionSend}
                                 placeholder="Chi nhánh chuuyển"
                                 allowClear
+                                value={send}
                             >
                                 {inSend &&
                                     inSend.map((item: inventory) => (
@@ -423,6 +436,7 @@ export const ListExport = () => {
                                 placeholder="Chi nhánh nhận"
                                 onSelect={handleClickOptionReceive}
                                 allowClear
+                                value={receive}
                             >
                                 {inReceive &&
                                     inReceive.map((item: inventory) => (

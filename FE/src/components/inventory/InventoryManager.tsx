@@ -36,6 +36,7 @@ import { useMutation } from "@tanstack/react-query";
 import Buttonn from "../../UI/Button";
 import AddIcon from "@mui/icons-material/Add";
 import useTitle from "../../app/useTitle";
+import InventoryByQuantity from "./InventoryByQuantity";
 
 const InventoryManager = () => {
   useTitle("Quản lý kho","Quản lý kho");
@@ -110,7 +111,7 @@ const InventoryManager = () => {
         return (
           <Link
             style={{ textDecoration: "underline" }}
-            to={`/products/${obj.productId}`}
+            to={`/warehouse/products/${obj.productId}`}
           >
             {obj.code}
           </Link>
@@ -325,6 +326,7 @@ const InventoryManager = () => {
         </h2>
         <div>
           <Space>
+            {inventory?.id ? <InventoryByQuantity inventoryId={inventory?.id} status={status}/> : null}
             <Button
               type="primary"
               onClick={() => navigate(`../warehouse/categories`)}

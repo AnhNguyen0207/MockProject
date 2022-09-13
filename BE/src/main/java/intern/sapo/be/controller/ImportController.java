@@ -39,42 +39,42 @@ public class ImportController {
     }
 
     @GetMapping("/findAll")
-    private List<ImportResponse> findAllDTO(@RequestParam String searchValue) {
+    public List<ImportResponse> findAllDTO(@RequestParam String searchValue) {
         return importService.findAllImportDTO(searchValue);
     }
 
     @GetMapping("/getDetails/{code}")
-    private DetailsImportsInvoiceResponse getDetails(@PathVariable String code) {
+    public DetailsImportsInvoiceResponse getDetails(@PathVariable String code) {
         return importService.getDetailInvoiceByCode(code);
     }
 
     @PutMapping("/updateStatus")
-    private void updateStatus(@RequestParam Integer id, @RequestParam String status, @RequestParam Integer accountId) {
+    public void updateStatus(@RequestParam Integer id, @RequestParam String status, @RequestParam Integer accountId) {
         importService.updateStatusImport(id, status, accountId);
     }
 
     @PutMapping("/updateStatusReturn")
-    private void updateStatusReturn(@RequestParam Integer id, @RequestParam String status, Integer accountId) {
+    public void updateStatusReturn(@RequestParam Integer id, @RequestParam String status, Integer accountId) {
         importService.updateStatusImportReturn(id, status, accountId);
     }
 
     @GetMapping("/getStatusHistory/{importId}")
-    private ResponseEntity<?> updateStatus(@PathVariable Integer importId) {
+    public ResponseEntity<?> updateStatus(@PathVariable Integer importId) {
         return ResponseEntity.ok(importsStatusService.findDetailsImportStatus(importId));
     }
 
     @GetMapping("/getReturnImport/{code}")
-    private ResponseEntity<?> getAllReturnImport(@PathVariable String code) {
+    public ResponseEntity<?> getAllReturnImport(@PathVariable String code) {
         return ResponseEntity.ok(importService.getAllReturnImport(code));
     }
 
     @GetMapping("/getDetailsReturnImport/{code}")
-    private ResponseEntity<?> getDetailsReturn(@PathVariable String code) {
+    public ResponseEntity<?> getDetailsReturn(@PathVariable String code) {
         return ResponseEntity.ok(importService.getDetailsReturnImport(code));
     }
 
     @GetMapping("/getImportInvoiceBySuppler/{id}")
-    private ResponseEntity<?> getInvoiceBySupplier(@PathVariable Integer id) {
+    public ResponseEntity<?> getInvoiceBySupplier(@PathVariable Integer id) {
         return ResponseEntity.ok(importService.getImportInvoiceBySupplier(id));
     }
 }
