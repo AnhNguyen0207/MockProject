@@ -1,0 +1,10 @@
+tr.ant-table-row:hover td {
+    background: #1890ff21!important;
+    cursor: pointer;
+  }
+/* td.ant-table-cell:nth-child(1) {
+    pointer-events: none;
+} */
+label.ant-checkbox-wrapper {
+    pointer-events: auto;
+}

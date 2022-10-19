@@ -1,21 +1,20 @@
-package com.example.be.base;
+package intern.sapo.be.base;
 
-import java.io.Serializable;
-import java.util.List;
 import java.util.Optional;
 
-public interface IBaseService<T ,ID extends Serializable> {
+public interface IBaseService<T> {
+
     T save(T entity);
 
-    Optional<T> findById(ID entityId);
+    Optional<T> findById(Integer entityId);
 
     T update(T entity);
 
-    T updateById(T entity, ID entityId);
+    T updateById(T entity, Integer entityId);
 
     void delete(T entity);
 
-    void deleteById(ID entityId);
+    void deleteById(Integer entityId);
 
-    List<T> getList(Integer page, Integer perPage, String sort, String sortBy);
+    ResponseListDto<T> getList(Integer page, Integer perPage, String sort, String sortBy);
 }

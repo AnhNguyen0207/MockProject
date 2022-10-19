@@ -1,36 +1,25 @@
-package com.example.be.base;
+package intern.sapo.be.base;
 
-import lombok.Data;
-import org.springframework.data.annotation.CreatedBy;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-
 @MappedSuperclass
+@Getter
+@Setter
 @EntityListeners(AuditingEntityListener.class)
-@Data
-public class BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public abstract class BaseEntity {
 
-    @Column
-    @CreatedBy
-    private String createBy;
 
-    @Column
+    @Column(name = "create_at", nullable = false)
     @CreatedDate
-    private Timestamp createdDate;
+    private Timestamp createAt;
 
-    @Column
-    @LastModifiedBy
-    private String modifiedBy;
-
-    @Column
+    @Column(name = "update_at")
     @LastModifiedDate
-    private Timestamp modifiedDate;
+    private Timestamp updateAt;
 }

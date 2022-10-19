@@ -1,0 +1,65 @@
+.side-bar {
+    position: relative;
+    height: 100%;
+    /* height: calc(100vh - 98px); */
+}
+.side-bar,
+.side-bar ul
+{
+    width: 100% !important;
+}
+.side-bar__brand-logo {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto max-content;
+    background-color: var(--headerBg);
+}
+.side-bar__brand-logo img {
+    padding: 10px;
+}
+.side-bar__brand-logo::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border-top: 1px solid #263d53;
+}
+
+.side-bar__brand-logo a {
+    top: 0;
+    left: 0;
+    display: block;
+    height: var(--headerHeight);
+    background: #182537;
+}
+
+/* .side-bar_menu {
+    background: #fff;
+    height: calc(100vh - 98px);
+} */
+
+.ant-menu.ant-menu-root.ant-menu-inline,
+.ant-menu.ant-menu-root.ant-menu-vertical.ant-menu-inline-collapsed
+{
+    max-height: calc(100vh - var(--headerHeight) - 48px);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.ant-menu.ant-menu-root::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+}
+.ant-menu.ant-menu-root::-webkit-scrollbar-thumb {
+    background: #202d3f;
+}
+.ant-menu.ant-menu-root::-webkit-scrollbar-corner {
+    background: #202d3f;
+}
+.ant-layout-sider {
+    transition: width 200ms;
+}
+.ant-table-body {
+    overflow: hidden !important;
+}

@@ -1,38 +1,47 @@
-package com.example.be.base;
+package intern.sapo.be.base;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
-public class BaseController<T,ID extends Serializable> {
-    @Autowired
-    private IBaseService<T,ID> baseService;
+@RequiredArgsConstructor
+@CrossOrigin("*")
+public abstract class BaseController<T> {
+
+    private final IBaseService<T> baseService;
+
     @PostMapping
     public T save(@RequestBody @Valid T request) {
         return baseService.save(request);
     }
 
-
-    @PutMapping("/{id}")
-    public T update(@RequestBody @Valid T request,@PathVariable ID id) {
+    @PatchMapping("/{id}")
+    public T update(@RequestBody @Valid T request, @PathVariable(value = "id") Integer id) {
         return baseService.updateById(request, id);
     }
 
-
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable ID id) {
+    public void delete(@PathVariable Integer id) {
         baseService.deleteById(id);
     }
 
-
     @GetMapping
-    public List<T> getList(@RequestParam(defaultValue = "1") Integer page,
-                                  @RequestParam(defaultValue = "2") Integer perPage,
-                                  @RequestParam(required = false) String sort,
-                                  @RequestParam(required = false) String sortBy) {
-        return baseService.getList(page,perPage,sort,sortBy);
+    public ResponseListDto<T> listAll(@RequestParam(defaultValue = "1") Integer page,
+                                      @RequestParam(defaultValue = "10") Integer perPage,
+                                      @RequestParam(required = false, defaultValue = "desc") String sort,
+                                      @RequestParam(required = false, defaultValue = "id") String sortBy) {
+        return baseService.getList(page, perPage, sort, sortBy);
+    }
+
+    @GetMapping("{id}")
+    public Optional<T> findById(@PathVariable(value = "id") Integer id) {
+        return baseService.findById(id);
     }
 }

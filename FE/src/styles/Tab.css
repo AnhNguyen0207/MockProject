@@ -1,0 +1,9 @@
+.ant-tabs-nav{
+    display: block!important;
+}
+.ant-steps-item-wait > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
+    background-color: #dfdcdc!important;
+}
+.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
+    background-color: #dfdcdc!important;
+}

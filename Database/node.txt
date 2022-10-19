@@ -1,0 +1,16 @@
+Phân quyền động:
+	- Thêm sửa xóa sản phẩm,
+	- Thêm sửa xóa Nhà cung cấp
+	- Thêm sửa xóa kho (Admin)
+	- Quản lý hợp đồng
+	- Quản lý Phiếu Nhập
+	- Quản lý phiếu xuất
+
+- Tạo bảng log
+
+product_id
+
+
+
+options
+options_id

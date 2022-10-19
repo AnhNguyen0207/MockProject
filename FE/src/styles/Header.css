@@ -1,0 +1,25 @@
+.top-header {
+    height: var(--headerHeight) !important;
+    /* background: var(--headerBg) !important; */
+    background: #fff !important;
+    border-bottom: 1px solid #dddee0;
+    position: sticky;
+    top: 0;
+}
+/* .top-header-menu {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    height: 100%;
+    padding: 0 15px;
+} */
+
+.user-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.user-box div {
+    line-height: 100%;
+}
